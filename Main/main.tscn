@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://xb16gbf3vf4v"]
+
+[ext_resource type="Script" uid="uid://btmeh8q2s88e5" path="res://Main/main.gd" id="1_qvhan"]
+[ext_resource type="PackedScene" uid="uid://c5k8jqhxyollp" path="res://Main/Mob/crepes.tscn" id="2_eunhr"]
+[ext_resource type="PackedScene" uid="uid://djvvlikfcphou" path="res://Main/Player/Player.tscn" id="3_k3v36"]
+
+[sub_resource type="Curve2D" id="Curve2D_liyct"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node" unique_id=177431613]
+script = ExtResource("1_qvhan")
+mob_scene = ExtResource("2_eunhr")
+
+[node name="Player" parent="." unique_id=975557939 instance=ExtResource("3_k3v36")]
+visible = false
+
+[node name="Mob_timer" type="Timer" parent="." unique_id=171468830]
+wait_time = 0.5
+
+[node name="Score_timer" type="Timer" parent="." unique_id=1561192366]
+
+[node name="Start_timer" type="Timer" parent="." unique_id=891264803]
+wait_time = 2.0
+one_shot = true
+
+[node name="Start_post" type="Marker2D" parent="." unique_id=244047756]
+position = Vector2(240, 450)
+
+[node name="Crepes_path" type="Path2D" parent="." unique_id=518557485]
+curve = SubResource("Curve2D_liyct")
+
+[node name="Spawn_locat" type="PathFollow2D" parent="Crepes_path" unique_id=1911803590]
