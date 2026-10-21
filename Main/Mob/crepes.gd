@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 func _ready():
-	var crepes_variants = Array($AnimatedSprite2D.spirit_frames.get_animation_names())
+	var crepes_variants = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
 	$AnimatedSprite2D.animation = crepes_variants.pick_random()
 	$AnimatedSprite2D.play()
 	
