@@ -48,8 +48,9 @@ animations = [{
 radius = 30.0
 height = 100.0
 
-[node name="Crepes" type="RigidBody2D" unique_id=1641842457]
+[node name="Crepes" type="RigidBody2D" unique_id=1641842457 groups=["Crepeses"]]
 position = Vector2(-1, 20)
+collision_layer = 3
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_yswhh")
@@ -66,4 +67,5 @@ shape = SubResource("CapsuleShape2D_vwo0u")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1542863592]
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
