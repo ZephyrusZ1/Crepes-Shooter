@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://i0mqbpqljjab" path="res://Main/Player/player.gd" id="1_6fdm1"]
 [ext_resource type="Texture2D" uid="uid://6p3s7tb5isdm" path="res://Art/playerGrey_up1.png" id="1_n21ks"]
 [ext_resource type="Texture2D" uid="uid://cytju2kepmacb" path="res://Art/playerGrey_up2.png" id="2_6fdm1"]
+[ext_resource type="PackedScene" uid="uid://brbl3mbyqx4oc" path="res://Main/Mob/bullet_body.tscn" id="2_w7xjh"]
 [ext_resource type="Texture2D" uid="uid://6tgtfegs6net" path="res://Art/playerGrey_walk1.png" id="3_w7xjh"]
 [ext_resource type="Texture2D" uid="uid://86ukxe5gvaof" path="res://Art/playerGrey_walk2.png" id="4_34nvv"]
 
@@ -38,6 +39,7 @@ height = 62.0
 [node name="Player" type="Area2D" unique_id=975557939]
 position = Vector2(2, 0)
 script = ExtResource("1_6fdm1")
+bullet_scene = ExtResource("2_w7xjh")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=820919647]
@@ -49,5 +51,9 @@ frame_progress = 0.69001657
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=440513664]
 shape = SubResource("CapsuleShape2D_htemk")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=706135184]
+
+[node name="Bullet_body" parent="." unique_id=2123911722 instance=ExtResource("2_w7xjh")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
