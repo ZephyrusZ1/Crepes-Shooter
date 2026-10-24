@@ -4,11 +4,12 @@ extends Area2D
 var screen_size
 @export var bullet_scene: PackedScene
 @onready var bullet_origin = $Marker2D
-
+var bullet_count = 10
+var rel_delay = 2
+var fire_rate = 0.3
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
-
 func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_down"):
@@ -20,7 +21,18 @@ func _process(delta):
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
 	if Input.is_action_just_pressed("shoot"):
-		pass
+		var delay = true 
+		if bullet_count > 0 and delay == true:
+			fire_bullet()
+			bullet_count -= 1
+			delay = false
+			await get_tree(). create_timer(fire_rate).timeout
+			
+			delay = true
+		else:
+			pass
+	if Input.is_action_just_pressed("reload"):
+		bullet_count += 10
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
@@ -36,20 +48,17 @@ func _process(delta):
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
-
 signal hit 
-
 func _on_body_entered(body: Node2D):
-	hide()
+	queue_free()
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled","true")
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-
 func fire_bullet():
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = bullet_origin.global_position
-	bullet.global_rotation = bullet_origin.global_rotation
+	bullet.look_at(get_global_mouse_position())
 	get_parent().add_child(bullet)

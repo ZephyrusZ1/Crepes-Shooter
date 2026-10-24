@@ -4,26 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://kx6u5lmg6jb7" path="res://Art/projectile-placeholder.png" id="2_cyenw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htemk"]
-radius = 77.0
+radius = 18.0
 
-[node name="Bullet_body" type="RigidBody2D" unique_id=2123911722]
+[node name="Bullet_body" type="Area2D" unique_id=532713529]
 position = Vector2(-5, 1)
 collision_layer = 2
 collision_mask = 2
-mass = 0.001
-gravity_scale = 0.0
 script = ExtResource("1_ex3r6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=480545132]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_cyenw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=512093977]
-position = Vector2(5, -2)
+position = Vector2(2, -1)
 shape = SubResource("CircleShape2D_htemk")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1558258201]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="VisibleOnScreenNotifier2D" method="_on_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
