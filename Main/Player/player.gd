@@ -6,7 +6,9 @@ var screen_size
 @onready var bullet_origin = $Marker2D
 var bullet_count = 10
 var rel_delay = 2
-var fire_rate = 0.3
+var fire_rate = 0.8
+var delay = true
+var delay2 = false
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
@@ -21,18 +23,19 @@ func _process(delta):
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
 	if Input.is_action_just_pressed("shoot"):
-		var delay = true 
+		 
 		if bullet_count > 0 and delay == true:
 			fire_bullet()
 			bullet_count -= 1
 			delay = false
-			await get_tree(). create_timer(fire_rate).timeout
-			
+			await get_tree().create_timer(fire_rate).timeout
 			delay = true
 		else:
 			pass
 	if Input.is_action_just_pressed("reload"):
-		bullet_count += 10
+			bullet_count = 0
+			await get_tree().create_timer(rel_delay).timeout
+			bullet_count += 10
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
