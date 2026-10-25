@@ -43,6 +43,8 @@ color = Color(0.16, 0.16, 0.5, 0.99607843)
 [node name="Player" parent="." unique_id=975557939 instance=ExtResource("3_k3v36")]
 visible = false
 
+[node name="HUD" parent="." unique_id=891124940 instance=ExtResource("4_eunhr")]
+
 [node name="Mob_timer" type="Timer" parent="." unique_id=171468830]
 wait_time = 0.5
 
@@ -60,8 +62,6 @@ curve = SubResource("Curve2D_liyct")
 
 [node name="Spawn_locat" type="PathFollow2D" parent="Crepes_path" unique_id=1911803590]
 
-[node name="HUD" parent="." unique_id=891124940 instance=ExtResource("4_eunhr")]
-
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=808411047]
 stream = ExtResource("6_ib3t1")
 
@@ -70,7 +70,7 @@ stream = SubResource("AudioStreamOggVorbis_k3v36")
 autoplay = true
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="Mob_timer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="Score_timer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Start_timer" to="." method="_on_start_timer_timeout"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]

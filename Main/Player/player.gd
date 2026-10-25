@@ -12,7 +12,7 @@ var fire_rate = 0.8
 var delay = true
 var delay2 = false
 @onready var bullet_counter = $Bullet_count
-var shotgun = 1
+var shotgun = 0
 var shotgun_active = false
 
 func _ready():

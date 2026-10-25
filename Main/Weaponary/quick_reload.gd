@@ -12,7 +12,7 @@ func _on_area_entered(area: Area2D):
 		queue_free()
 		
 func auto_delete():
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
 	queue_free()
 
 func _ready():

@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bcqi2i4xhx7sr" path="res://Art/bitmap.png" id="2_3e0if"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_14cdr"]
-radius = 53.009434
+radius = 46.34412
 
-[node name="Shotgun" type="Area2D" unique_id=1941593901 groups=["Shotgun"]]
+[node name="Shotgun" type="Area2D" unique_id=1941593901 groups=["Shotgun", "shotgun"]]
 position = Vector2(0, 1)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_dm81p")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=934329190]
 scale = Vector2(0.4, 0.4)
