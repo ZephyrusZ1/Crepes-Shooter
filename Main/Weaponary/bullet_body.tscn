@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://brbl3mbyqx4oc"]
 
-[ext_resource type="Script" uid="uid://beb4af3njo7eh" path="res://Main/Mob/bullet_body.gd" id="1_ex3r6"]
-[ext_resource type="Texture2D" uid="uid://kx6u5lmg6jb7" path="res://Art/projectile-placeholder.png" id="2_cyenw"]
+[ext_resource type="Script" uid="uid://beb4af3njo7eh" path="res://Main/Weaponary/bullet_body.gd" id="1_woue0"]
+[ext_resource type="Texture2D" uid="uid://kx6u5lmg6jb7" path="res://Art/projectile-placeholder.png" id="2_0kmj0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htemk"]
 radius = 18.0
@@ -10,11 +10,11 @@ radius = 18.0
 position = Vector2(-5, 1)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_ex3r6")
+script = ExtResource("1_woue0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=480545132]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_cyenw")
+texture = ExtResource("2_0kmj0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=512093977]
 position = Vector2(2, -1)

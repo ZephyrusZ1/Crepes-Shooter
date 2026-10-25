@@ -17,6 +17,7 @@ func new_game():
 	get_tree().call_group("Crepeses", "queue_free")
 	$BGM.play()
 	$Player
+	get_tree().call_group("Power_up", "queue_free")
 	
 
 func _on_score_timer_timeout():
