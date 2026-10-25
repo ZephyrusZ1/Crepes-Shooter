@@ -15,6 +15,7 @@ var delay2 = false
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
+	$Bullet_count.show()
 	
 	
 func _process(delta):
@@ -64,7 +65,7 @@ func _process(delta):
 signal hit 
 
 func _on_body_entered(body: Node2D):
-	queue_free()
+	hide()
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled","true")
 	
@@ -72,7 +73,8 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-	
+	bullet_count = 10
+	update_counter()
 func fire_bullet():
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = bullet_origin.global_position

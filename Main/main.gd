@@ -16,6 +16,7 @@ func new_game():
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("Crepeses", "queue_free")
 	$BGM.play()
+	$Player
 	
 
 func _on_score_timer_timeout():
