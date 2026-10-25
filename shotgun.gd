@@ -4,7 +4,9 @@ extends Area2D
 
 func _on_area_entered(area: Area2D):
 	if area.name == "Player":
-		area.shoutgun += 1
+		area.shotgun += 1
+		area.shotgun_active = true
+		area.shotgun_activation()
 		queue_free()
 		
 func auto_delete():

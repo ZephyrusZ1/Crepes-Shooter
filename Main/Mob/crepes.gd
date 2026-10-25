@@ -22,8 +22,11 @@ func _on_body_entered(body: Node):
 	queue_free()
 
 func killed():
-	if randf() <= 0.3 :
-		var drop = quick_reload.instantiate()
-		drop.global_position = global_position
-		get_tree().current_scene.call_deferred("add_child", drop)
+	if randf() <= 0.2 :
+		var pools = [quick_reload, shotgun]
+		var pool_pick = pools.pick_random()
+		if pool_pick:
+			var drop = pool_pick.instantiate()
+			drop.global_position = global_position
+			get_tree().current_scene.call_deferred("add_child", drop)
 	queue_free()

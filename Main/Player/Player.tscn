@@ -68,4 +68,13 @@ theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=970138851]
+
+[node name="Shotgun_mode" type="Label" parent="CanvasLayer" unique_id=1066925558]
+offset_right = 64.0
+offset_bottom = 32.0
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("7_34nvv")
+theme_override_font_sizes/font_size = 32
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

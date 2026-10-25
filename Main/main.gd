@@ -18,6 +18,7 @@ func new_game():
 	$BGM.play()
 	$Player
 	get_tree().call_group("Power_up", "queue_free")
+	get_tree().call_group("Shotgun", "queue_free")
 	
 
 func _on_score_timer_timeout():

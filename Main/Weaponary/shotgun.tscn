@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_14cdr"]
 radius = 53.009434
 
-[node name="Shotgun" type="Area2D" unique_id=1941593901]
+[node name="Shotgun" type="Area2D" unique_id=1941593901 groups=["Shotgun"]]
 position = Vector2(0, 1)
 script = ExtResource("1_dm81p")
 
