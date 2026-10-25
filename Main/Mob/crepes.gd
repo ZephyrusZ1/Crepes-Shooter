@@ -1,4 +1,5 @@
 extends RigidBody2D
+@export var quick_reload: PackedScene
 @export var shotgun: PackedScene
 
 
@@ -22,7 +23,7 @@ func _on_body_entered(body: Node):
 
 func killed():
 	if randf() <= 0.3 :
-		var drop = shotgun.instantiate()
+		var drop = quick_reload.instantiate()
 		drop.global_position = global_position
 		get_tree().current_scene.call_deferred("add_child", drop)
 	queue_free()

@@ -16,6 +16,7 @@ func _on_body_entered(body: Node):
 	queue_free()
 	body.queue_free()
 	body.killed()
+
 	
 
 

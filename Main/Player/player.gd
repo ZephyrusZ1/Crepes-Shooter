@@ -11,12 +11,14 @@ var fire_rate = 0.8
 var delay = true
 var delay2 = false
 @onready var bullet_counter = $Bullet_count
+var shotgun = 1
+var shotgun_active = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 	$Bullet_count.show()
-	
+	shotgun_mode()
 	
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -29,9 +31,8 @@ func _process(delta):
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
 	if Input.is_action_just_pressed("shoot"):
-		 
+		fire_bullet()
 		if bullet_count > 0 and delay == true:
-			fire_bullet()
 			bullet_count -= 1
 			delay = false
 			update_counter()
@@ -76,6 +77,7 @@ func start(pos):
 	bullet_count = 10
 	update_counter()
 func fire_bullet():
+
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = bullet_origin.global_position
 	bullet.look_at(get_global_mouse_position())
@@ -84,3 +86,9 @@ func fire_bullet():
 func update_counter():
 	bullet_counter.text = str(bullet_count)
 	$Bullet_count.show()
+
+func shotgun_mode():
+	if shotgun > 0:
+		shotgun_active = true
+	else:
+		pass

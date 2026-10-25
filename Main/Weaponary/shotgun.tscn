@@ -1,24 +1,21 @@
-[gd_scene format=3 uid="uid://2fxdfxksg1nt"]
+[gd_scene format=3 uid="uid://cl1vyn6wjsrd"]
 
-[ext_resource type="Script" uid="uid://cmlt6l56rrxhr" path="res://Main/Weaponary/shotgun.gd" id="1_dm81p"]
-[ext_resource type="Texture2D" uid="uid://bb2x6ehfmx8hl" path="res://Art/shotgun_collect.png" id="2_3e0if"]
+[ext_resource type="Script" uid="uid://xe28hg84ik5a" path="res://shotgun.gd" id="1_dm81p"]
+[ext_resource type="Texture2D" uid="uid://bcqi2i4xhx7sr" path="res://Art/bitmap.png" id="2_3e0if"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_htemk"]
-size = Vector2(61, 58)
+[sub_resource type="CircleShape2D" id="CircleShape2D_14cdr"]
+radius = 53.009434
 
-[node name="Shotgun" type="Area2D" unique_id=1568954786 groups=["Power_up"]]
-position = Vector2(0, -1)
+[node name="Shotgun" type="Area2D" unique_id=1941593901]
+position = Vector2(0, 1)
 script = ExtResource("1_dm81p")
-metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1219522234]
-position = Vector2(-38, 36)
-scale = Vector2(0.6, 0.559)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=934329190]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_3e0if")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1391180951]
-position = Vector2(-48.5, 46)
-shape = SubResource("RectangleShape2D_htemk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1195013590]
+position = Vector2(2, 11)
+shape = SubResource("CircleShape2D_14cdr")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -8,7 +8,7 @@ radius = 18.0
 
 [node name="Bullet_body" type="Area2D" unique_id=532713529]
 position = Vector2(-5, 1)
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_woue0")
 
