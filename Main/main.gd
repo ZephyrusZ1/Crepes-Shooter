@@ -2,6 +2,8 @@ extends Node
 
 @export var mob_scene: PackedScene
 var score
+var count = 10
+
 
 
 
@@ -18,8 +20,7 @@ func new_game():
 
 func _on_score_timer_timeout():
 	score += 1
-	$HUD.update_score(score)
-
+	$HUD.update_score(score) 
 
 func _on_start_timer_timeout():
 	$Mob_timer.start()
@@ -27,6 +28,7 @@ func _on_start_timer_timeout():
 	
 	
 func _on_mob_timer_timeout():
+
 	var mob = mob_scene.instantiate()
 	
 	var mob_spawn_loc = $Crepes_path/Spawn_locat
@@ -40,7 +42,8 @@ func _on_mob_timer_timeout():
 	var velocity =Vector2(randf_range(150, 250), 0)
 	mob.linear_velocity = velocity.rotated(direction)
 	add_child(mob)
-	
+
+
 #game over
 func _on_player_hit():
 	$Score_timer.stop()
@@ -48,6 +51,4 @@ func _on_player_hit():
 	$HUD.show_game_over()
 	$Death.play()
 	$BGM.stop()
-	
-
 	

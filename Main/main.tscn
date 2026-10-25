@@ -69,6 +69,7 @@ stream = ExtResource("6_ib3t1")
 stream = SubResource("AudioStreamOggVorbis_k3v36")
 autoplay = true
 
+[connection signal="bullet_change" from="Player" to="." method="_on_player_bullet_change"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="Mob_timer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="Score_timer" to="." method="_on_score_timer_timeout"]

@@ -25,3 +25,6 @@ func _on_start_pressed():
 
 func _on_message_timer_timeout():
 	$Message_label.hide()
+
+func upd_bullet_count(count):
+	$Bullet_count.text = str(count)

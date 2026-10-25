@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://brbl3mbyqx4oc" path="res://Main/Mob/bullet_body.tscn" id="2_w7xjh"]
 [ext_resource type="Texture2D" uid="uid://6tgtfegs6net" path="res://Art/playerGrey_walk1.png" id="3_w7xjh"]
 [ext_resource type="Texture2D" uid="uid://86ukxe5gvaof" path="res://Art/playerGrey_walk2.png" id="4_34nvv"]
+[ext_resource type="FontFile" uid="uid://bqrr8ob03lm0b" path="res://Art/Xolonium-Regular.ttf" id="7_34nvv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_htemk"]
 animations = [{
@@ -55,5 +56,16 @@ shape = SubResource("CapsuleShape2D_htemk")
 [node name="Marker2D" type="Marker2D" parent="." unique_id=706135184]
 
 [node name="Bullet_body" parent="." unique_id=2123911722 instance=ExtResource("2_w7xjh")]
+
+[node name="Bullet_count" type="Label" parent="." unique_id=1703874511]
+offset_left = -2.0
+offset_right = 62.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_34nvv")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
