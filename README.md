@@ -1,0 +1,1 @@
+A game about dodging mobs while simultaneously having the capability to shoot at them with your gun. You also can collect power up to temporarily upgrade your gun or collect other weapons from the mobs
