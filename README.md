@@ -3,5 +3,6 @@ Controls: W and arrow up to go up
           S and arrow down to go down
           A and arrow left to go left
           D and arrow right to go right
+          R to reload
           Space to shoot
           Mouse to direct where bullet will go
