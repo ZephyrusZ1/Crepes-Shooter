@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://c5k8jqhxyollp"]
 
 [ext_resource type="Script" uid="uid://d34o1bw6y4aui" path="res://Main/Mob/crepes.gd" id="1_yswhh"]
-[ext_resource type="Texture2D" uid="uid://bifb71m537wwn" path="res://Art/enemyFlyingAlt_1.png" id="2_h2e20"]
 [ext_resource type="PackedScene" uid="uid://2fxdfxksg1nt" path="res://Main/Weaponary/quick_reload.tscn" id="2_votsr"]
 [ext_resource type="PackedScene" uid="uid://cl1vyn6wjsrd" path="res://Main/Weaponary/shotgun.tscn" id="3_vkl81"]
-[ext_resource type="Texture2D" uid="uid://bnl17t1j614rd" path="res://Art/enemyFlyingAlt_2.png" id="3_votsr"]
-[ext_resource type="Texture2D" uid="uid://d0d05yh4wfxxw" path="res://Art/enemySwimming_1.png" id="4_vkl81"]
-[ext_resource type="Texture2D" uid="uid://bj648vwdtbo57" path="res://Art/enemySwimming_2.png" id="5_ntgcv"]
-[ext_resource type="Texture2D" uid="uid://cd7unvv83oxh0" path="res://Art/enemyWalking_1.png" id="6_wdwrx"]
-[ext_resource type="Texture2D" uid="uid://ylhrtfiiebpl" path="res://Art/enemyWalking_2.png" id="7_xua3a"]
+[ext_resource type="Texture2D" uid="uid://bifb71m537wwn" path="res://Art/Enemy/Placeholder/enemyFlyingAlt_1.png" id="4_votsr"]
+[ext_resource type="Texture2D" uid="uid://bnl17t1j614rd" path="res://Art/Enemy/Placeholder/enemyFlyingAlt_2.png" id="5_vkl81"]
+[ext_resource type="Texture2D" uid="uid://d0d05yh4wfxxw" path="res://Art/Enemy/Placeholder/enemySwimming_1.png" id="6_ntgcv"]
+[ext_resource type="Texture2D" uid="uid://bj648vwdtbo57" path="res://Art/Enemy/Placeholder/enemySwimming_2.png" id="7_wdwrx"]
+[ext_resource type="Texture2D" uid="uid://cd7unvv83oxh0" path="res://Art/Enemy/Placeholder/enemyWalking_1.png" id="8_xua3a"]
+[ext_resource type="Texture2D" uid="uid://ylhrtfiiebpl" path="res://Art/Enemy/Placeholder/enemyWalking_2.png" id="9_oeaxc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qvhan"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_h2e20")
+"texture": ExtResource("4_votsr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_votsr")
+"texture": ExtResource("5_vkl81")
 }],
 "loop": 1,
 "name": &"fly",
@@ -25,10 +25,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_vkl81")
+"texture": ExtResource("6_ntgcv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ntgcv")
+"texture": ExtResource("7_wdwrx")
 }],
 "loop": 1,
 "name": &"swim",
@@ -36,10 +36,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_wdwrx")
+"texture": ExtResource("8_xua3a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_xua3a")
+"texture": ExtResource("9_oeaxc")
 }],
 "loop": 1,
 "name": &"walk",
@@ -55,6 +55,8 @@ position = Vector2(-1, 20)
 collision_layer = 3
 collision_mask = 0
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_yswhh")
 quick_reload = ExtResource("2_votsr")
 shotgun = ExtResource("3_vkl81")
@@ -63,7 +65,8 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1326364231]
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_qvhan")
-animation = &"fly"
+animation = &"walk"
+frame_progress = 0.7735272
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2007326404]
 rotation = 1.5707964
@@ -72,4 +75,5 @@ shape = SubResource("CapsuleShape2D_vwo0u")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1542863592]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="death" from="." to="." method="_on_death"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_htemk"]
 radius = 18.0
 
-[node name="Bullet_body" type="Area2D" unique_id=532713529]
+[node name="Bullet_body" type="Area2D" unique_id=532713529 groups=["bullets"]]
 position = Vector2(-5, 1)
 collision_layer = 0
 collision_mask = 2

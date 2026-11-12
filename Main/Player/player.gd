@@ -1,11 +1,12 @@
 extends Area2D
 
-@export var speed = 400
+@export var speed = 450
 var screen_size
 @export var bullet_scene: PackedScene
+@export var grenade: PackedScene
 @onready var bullet_origin = $Marker2D
 @onready var shotgun_label = $CanvasLayer/Shotgun_mode
-
+var shotgun_lock = true
 var bullet_count = 10
 var rel_delay = 2
 var fire_rate = 0.8
@@ -14,57 +15,66 @@ var delay2 = false
 @onready var bullet_counter = $Bullet_count
 var shotgun = 0
 var shotgun_active = false
+var unlock  = false
+var nade = 1
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
-	$Bullet_count.show()
 	shotgun_mode()
 	shotgun_activation()
 func _process(delta):
-	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_just_pressed("shoot"):
-		if bullet_count > 0 and delay == true:
-			bullet_count -= 1
-			delay = false
-			update_counter()
-			fire_bullet()
-			await get_tree().create_timer(fire_rate).timeout
-			delay = true
+	if unlock == true:
+		var velocity = Vector2.ZERO
+		if Input.is_action_pressed("move_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("move_up"):
+			velocity.y -= 1
+		if Input.is_action_pressed("move_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("move_left"):
+			velocity.x -= 1
+		if Input.is_action_just_pressed("shoot"):
+			if bullet_count > 0 and delay == true:
+				bullet_count -= 1
+				delay = false
+				update_counter()
+				fire_bullet()
+				await get_tree().create_timer(fire_rate).timeout
+				delay = true
+				
+			else:
+				pass
+		if Input.is_action_just_pressed("reload"):
+				bullet_count = 0
+				update_counter()
+				await get_tree().create_timer(rel_delay).timeout
+				bullet_count = 10
+				update_counter()
+		if Input.is_action_just_pressed("shotgun_lock"):
+			shotgun_lock = false
+		if Input.is_action_just_pressed("nade") and nade > 0:
+			nade -= 1
+
 			
+			
+			
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * speed
+			$AnimatedSprite2D.play()
 		else:
-			pass
-	if Input.is_action_just_pressed("reload"):
-			bullet_count = 0
-			update_counter()
-			await get_tree().create_timer(rel_delay).timeout
-			bullet_count = 10
-			update_counter()
-		
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
-		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
-		
+			$AnimatedSprite2D.stop()
+			
+		position += velocity * delta
+		position = position.clamp(Vector2.ZERO, screen_size)
+		if velocity.x != 0:
+			$AnimatedSprite2D.animation = "walk"
+			$AnimatedSprite2D.flip_v = false
+			$AnimatedSprite2D.flip_h = velocity.x < 0
+		elif velocity.y != 0:
+			$AnimatedSprite2D.animation = "up"
+			$AnimatedSprite2D.flip_v = velocity.y > 0
+		auto_shoot()
 signal hit 
 
 func _on_body_entered(body: Node2D):
@@ -80,7 +90,7 @@ func start(pos):
 	bullet_count = 10
 	update_counter()
 func fire_bullet():
-	if shotgun_active == true:
+	if shotgun_active == true and shotgun_lock == false:
 		var angle = [0.2, 0, -0.2]
 		for pellets in angle:
 			var bullet = bullet_scene.instantiate()
@@ -92,6 +102,7 @@ func fire_bullet():
 			shotgun_activation()
 			if shotgun < 1:
 				shotgun_active = false
+				shotgun_lock = true
 				shotgun_activation()
 	else:
 		var bullet = bullet_scene.instantiate()
@@ -101,7 +112,7 @@ func fire_bullet():
 
 func update_counter():
 	bullet_counter.text = str(bullet_count)
-	$Bullet_count.show()
+	
 
 func shotgun_activation():
 	if shotgun_active == true:
@@ -113,3 +124,17 @@ func shotgun_activation():
 func shotgun_mode():
 	if shotgun > 0:
 		shotgun_active = true
+
+
+func auto_shoot():
+	if delay == true:
+		fire_bullet()
+		delay = false
+		await get_tree().create_timer(0.4).timeout
+		delay = true
+
+func throw_grenade():
+	var explosives = grenade.instantiate()
+	explosives.global_position = bullet_origin.global_position
+	explosives.look_at(get_global_mouse_position())
+	get_parent().add_child(explosives)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0d05yh4wfxxw"
-path="res://.godot/imported/enemySwimming_1.png-2539b959bc6209201961398be160c5db.ctex"
+uid="uid://crnxi0vgkvavn"
+path="res://.godot/imported/Death Explosion.png-1ca1ec1f97267759f2c071be1f3b3695.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/enemySwimming_1.png"
-dest_files=["res://.godot/imported/enemySwimming_1.png-2539b959bc6209201961398be160c5db.ctex"]
+source_file="res://Art/FX/Death Explosion.png"
+dest_files=["res://.godot/imported/Death Explosion.png-1ca1ec1f97267759f2c071be1f3b3695.ctex"]
 
 [params]
 

@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://djvvlikfcphou"]
 
 [ext_resource type="Script" uid="uid://i0mqbpqljjab" path="res://Main/Player/player.gd" id="1_6fdm1"]
-[ext_resource type="Texture2D" uid="uid://6p3s7tb5isdm" path="res://Art/playerGrey_up1.png" id="1_n21ks"]
-[ext_resource type="Texture2D" uid="uid://cytju2kepmacb" path="res://Art/playerGrey_up2.png" id="2_6fdm1"]
+[ext_resource type="Texture2D" uid="uid://6p3s7tb5isdm" path="res://Art/Player/playerGrey_up1.png" id="1_n21ks"]
+[ext_resource type="Texture2D" uid="uid://cytju2kepmacb" path="res://Art/Player/playerGrey_up2.png" id="2_6fdm1"]
 [ext_resource type="PackedScene" uid="uid://brbl3mbyqx4oc" path="res://Main/Weaponary/bullet_body.tscn" id="2_w7xjh"]
-[ext_resource type="Texture2D" uid="uid://6tgtfegs6net" path="res://Art/playerGrey_walk1.png" id="3_w7xjh"]
-[ext_resource type="Texture2D" uid="uid://86ukxe5gvaof" path="res://Art/playerGrey_walk2.png" id="4_34nvv"]
+[ext_resource type="PackedScene" uid="uid://cis1lqhvn3sp6" path="res://Main/Weaponary/explosives.tscn" id="3_eii65"]
+[ext_resource type="Texture2D" uid="uid://6tgtfegs6net" path="res://Art/Player/playerGrey_walk1.png" id="3_w7xjh"]
+[ext_resource type="Texture2D" uid="uid://86ukxe5gvaof" path="res://Art/Player/playerGrey_walk2.png" id="4_34nvv"]
 [ext_resource type="FontFile" uid="uid://bqrr8ob03lm0b" path="res://Art/Xolonium-Regular.ttf" id="7_34nvv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_htemk"]
@@ -41,6 +42,7 @@ height = 62.0
 position = Vector2(2, 0)
 script = ExtResource("1_6fdm1")
 bullet_scene = ExtResource("2_w7xjh")
+grenade = ExtResource("3_eii65")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=820919647]
@@ -56,6 +58,7 @@ shape = SubResource("CapsuleShape2D_htemk")
 [node name="Bullet_body" parent="." unique_id=2123911722 instance=ExtResource("2_w7xjh")]
 
 [node name="Bullet_count" type="Label" parent="." unique_id=1703874511]
+visible = false
 offset_left = -2.0
 offset_right = 62.0
 offset_bottom = 64.0
