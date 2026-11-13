@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://btmeh8q2s88e5" path="res://Main/main.gd" id="1_qvhan"]
 [ext_resource type="PackedScene" uid="uid://c5k8jqhxyollp" path="res://Main/Mob/crepes.tscn" id="2_eunhr"]
 [ext_resource type="PackedScene" uid="uid://djvvlikfcphou" path="res://Main/Player/Player.tscn" id="3_k3v36"]
+[ext_resource type="PackedScene" uid="uid://dnhxbcl0u3fm3" path="res://Main/Mob/arrow.tscn" id="3_liyct"]
 [ext_resource type="PackedScene" uid="uid://cpgkrvunm1gy7" path="res://Main/HUD/HUD.tscn" id="4_eunhr"]
-[ext_resource type="AudioStream" uid="uid://cv4pceejbjdyo" path="res://Art/gameover.wav" id="6_ib3t1"]
+[ext_resource type="AudioStream" uid="uid://cv4pceejbjdyo" path="res://Art/Music/gameover.wav" id="6_ib3t1"]
 
 [sub_resource type="Curve2D" id="Curve2D_liyct"]
 _data = {
@@ -28,9 +29,16 @@ tags = {
 "title": "House In a Forest Loop"
 }
 
+[sub_resource type="Curve2D" id="Curve2D_ib3t1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Main" type="Node" unique_id=177431613]
 script = ExtResource("1_qvhan")
 mob_scene = ExtResource("2_eunhr")
+arrow_scene = ExtResource("3_liyct")
 
 [node name="Bg_color" type="ColorRect" parent="." unique_id=1580276168]
 anchors_preset = 15
@@ -69,8 +77,18 @@ stream = ExtResource("6_ib3t1")
 stream = SubResource("AudioStreamOggVorbis_k3v36")
 autoplay = true
 
+[node name="Arrow_path" type="Path2D" parent="." unique_id=1024184431]
+curve = SubResource("Curve2D_ib3t1")
+metadata/_edit_group_ = true
+
+[node name="Arrow_spawn" type="PathFollow2D" parent="Arrow_path" unique_id=1114970885]
+
+[node name="Arrow_timer" type="Timer" parent="." unique_id=674283391]
+autostart = true
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="Mob_timer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="Score_timer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Start_timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Arrow_timer" to="." method="_on_arrow_timer_timeout"]

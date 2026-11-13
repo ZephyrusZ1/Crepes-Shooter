@@ -5,6 +5,7 @@ extends Area2D
 func _on_area_entered(area: Area2D):
 	if area.name == "Player":
 		area.nade += 1
+		area.update_counter()
 		queue_free()
 		
 func auto_delete():

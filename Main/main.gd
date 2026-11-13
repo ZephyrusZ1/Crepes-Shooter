@@ -1,6 +1,7 @@
 extends Node
 
 @export var mob_scene: PackedScene
+@export var arrow_scene: PackedScene
 var score = 0
 var count = 20
 var mob_count = 0
@@ -21,6 +22,7 @@ func new_game():
 	get_tree().call_group("Shotgun", "queue_free")
 	get_tree().call_group("bullets", "queue_free")
 	get_tree().call_group("explosives", "queue_free")
+	get_tree().call_group("arrow", "queue_free")
 	mob_count = 0
 
 
@@ -60,3 +62,19 @@ func _on_death():
 	score += 1
 	$HUD.update_score(score)
 	mob_count -= 1
+
+
+
+func _on_arrow_timer_timeout():
+	var arrow = arrow_scene.instantiate()
+	var arrow_spawn = $Arrow_path/Arrow_spawn
+	arrow_spawn.progress_ratio = randf()
+	arrow.global_position = arrow_spawn.global_position
+	
+	var direction = arrow_spawn.rotation + PI/2
+	arrow.rotation = direction
+	
+	var velocity =Vector2(randf_range(450, 600), 0)
+	arrow.velocity = velocity.rotated(direction)
+	add_child(arrow)
+	

@@ -57,8 +57,7 @@ shape = SubResource("CapsuleShape2D_htemk")
 
 [node name="Bullet_body" parent="." unique_id=2123911722 instance=ExtResource("2_w7xjh")]
 
-[node name="Bullet_count" type="Label" parent="." unique_id=1703874511]
-visible = false
+[node name="Grenade_count" type="Label" parent="." unique_id=1703874511]
 offset_left = -2.0
 offset_right = 62.0
 offset_bottom = 64.0

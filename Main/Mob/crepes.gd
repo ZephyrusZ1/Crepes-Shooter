@@ -13,8 +13,8 @@ func _ready():
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	killed()
 	
-	queue_free()
 
 
 func _on_body_entered(body: Node):
@@ -23,8 +23,8 @@ func _on_body_entered(body: Node):
 	
 func killed():
 	death.emit()
-	if randf() <= 0.8 :
-		var pools = [nade]
+	if randf() <= 0.2 :
+		var pools = [nade, shotgun,  quick_reload]
 		var pool_pick = pools.pick_random()
 		if pool_pick:
 			var drop = pool_pick.instantiate()

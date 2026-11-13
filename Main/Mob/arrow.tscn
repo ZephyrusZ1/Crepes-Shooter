@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dnhxbcl0u3fm3"]
+
+[ext_resource type="Script" uid="uid://dj7kbd1snavy3" path="res://Main/Mob/arrow.gd" id="1_m6joc"]
+[ext_resource type="Texture2D" uid="uid://bakgxun6jmno1" path="res://Art/FX/arrow_01e.png" id="1_p06vy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_htemk"]
+radius = 5.0
+height = 26.0
+
+[node name="Arrow" type="Area2D" unique_id=444975650 groups=["arrow"]]
+scale = Vector2(1.4, 1.4)
+script = ExtResource("1_m6joc")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=670916979]
+rotation = 2.3561945
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_p06vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1871355776]
+position = Vector2(2, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_htemk")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1038101324]
+default_color = Color(0.95586926, 4.78901e-06, 1.92523e-06, 1)

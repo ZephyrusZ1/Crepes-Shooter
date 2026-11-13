@@ -12,7 +12,7 @@ var rel_delay = 2
 var fire_rate = 0.8
 var delay = true
 var delay2 = false
-@onready var bullet_counter = $Bullet_count
+@onready var grenade_counter = $Grenade_count
 var shotgun = 0
 var shotgun_active = false
 var unlock  = false
@@ -56,7 +56,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("nade") and nade > 0:
 			nade -= 1
 			throw_grenade()
-			
+			update_counter()
 
 			
 			
@@ -76,7 +76,7 @@ func _process(delta):
 		elif velocity.y != 0:
 			$AnimatedSprite2D.animation = "up"
 			$AnimatedSprite2D.flip_v = velocity.y > 0
-		
+		auto_shoot()
 signal hit 
 
 func _on_body_entered(body: Node2D):
@@ -113,7 +113,7 @@ func fire_bullet():
 		get_parent().add_child(bullet)
 
 func update_counter():
-	bullet_counter.text = str(bullet_count)
+	grenade_counter.text = str(nade)
 	
 
 func shotgun_activation():
