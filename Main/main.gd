@@ -20,6 +20,7 @@ func new_game():
 	get_tree().call_group("Power_up", "queue_free")
 	get_tree().call_group("Shotgun", "queue_free")
 	get_tree().call_group("bullets", "queue_free")
+	get_tree().call_group("explosives", "queue_free")
 	mob_count = 0
 
 

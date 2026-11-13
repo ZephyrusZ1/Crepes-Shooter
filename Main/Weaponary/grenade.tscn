@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://d2blusil3kh4i"]
+
+[ext_resource type="Script" uid="uid://df3jybabskjy0" path="res://grenade.gd" id="1_sio0m"]
+[ext_resource type="Texture2D" uid="uid://crnxi0vgkvavn" path="res://Art/FX/Death Explosion.png" id="2_41bca"]
+[ext_resource type="Texture2D" uid="uid://kx6u5lmg6jb7" path="res://Art/projectile-placeholder.png" id="2_mbrw5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htemk"]
+radius = 128.24976
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbrw5"]
+atlas = ExtResource("2_41bca")
+region = Rect2(0, 0, 50, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8oqb"]
+atlas = ExtResource("2_41bca")
+region = Rect2(50, 0, 50, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vk2h"]
+atlas = ExtResource("2_41bca")
+region = Rect2(100, 0, 50, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yudj"]
+atlas = ExtResource("2_41bca")
+region = Rect2(150, 0, 50, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtnh"]
+atlas = ExtResource("2_41bca")
+region = Rect2(200, 0, 50, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma50g"]
+atlas = ExtResource("2_41bca")
+region = Rect2(250, 0, 50, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkfd4"]
+atlas = ExtResource("2_41bca")
+region = Rect2(300, 0, 50, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqrwe"]
+atlas = ExtResource("2_41bca")
+region = Rect2(350, 0, 50, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htemk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbrw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8oqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vk2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yudj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma50g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkfd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqrwe")
+}],
+"loop": 0,
+"name": &"Kaboom!",
+"speed": 12.0
+}]
+
+[node name="Grenade" type="Area2D" unique_id=370738314]
+script = ExtResource("1_sio0m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2075503491 groups=["explosives"]]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_mbrw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2133507408]
+shape = SubResource("CircleShape2D_htemk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1890333931]
+sprite_frames = SubResource("SpriteFrames_htemk")
+animation = &"Kaboom!"
+frame = 7
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d34o1bw6y4aui" path="res://Main/Mob/crepes.gd" id="1_yswhh"]
 [ext_resource type="PackedScene" uid="uid://2fxdfxksg1nt" path="res://Main/Weaponary/quick_reload.tscn" id="2_votsr"]
 [ext_resource type="PackedScene" uid="uid://cl1vyn6wjsrd" path="res://Main/Weaponary/shotgun.tscn" id="3_vkl81"]
+[ext_resource type="PackedScene" uid="uid://cis1lqhvn3sp6" path="res://Main/Weaponary/explosives.tscn" id="4_vkl81"]
 [ext_resource type="Texture2D" uid="uid://bifb71m537wwn" path="res://Art/Enemy/Placeholder/enemyFlyingAlt_1.png" id="4_votsr"]
 [ext_resource type="Texture2D" uid="uid://bnl17t1j614rd" path="res://Art/Enemy/Placeholder/enemyFlyingAlt_2.png" id="5_vkl81"]
 [ext_resource type="Texture2D" uid="uid://d0d05yh4wfxxw" path="res://Art/Enemy/Placeholder/enemySwimming_1.png" id="6_ntgcv"]
@@ -60,6 +61,7 @@ max_contacts_reported = 1
 script = ExtResource("1_yswhh")
 quick_reload = ExtResource("2_votsr")
 shotgun = ExtResource("3_vkl81")
+nade = ExtResource("4_vkl81")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1326364231]

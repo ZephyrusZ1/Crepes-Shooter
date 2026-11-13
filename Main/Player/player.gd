@@ -55,6 +55,8 @@ func _process(delta):
 			shotgun_lock = false
 		if Input.is_action_just_pressed("nade") and nade > 0:
 			nade -= 1
+			throw_grenade()
+			
 
 			
 			
@@ -74,7 +76,7 @@ func _process(delta):
 		elif velocity.y != 0:
 			$AnimatedSprite2D.animation = "up"
 			$AnimatedSprite2D.flip_v = velocity.y > 0
-		auto_shoot()
+		
 signal hit 
 
 func _on_body_entered(body: Node2D):
@@ -135,6 +137,6 @@ func auto_shoot():
 
 func throw_grenade():
 	var explosives = grenade.instantiate()
-	explosives.global_position = bullet_origin.global_position
-	explosives.look_at(get_global_mouse_position())
+	explosives.global_position = get_global_mouse_position()
 	get_parent().add_child(explosives)
+	explosives.thrown
