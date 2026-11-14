@@ -83,12 +83,8 @@ metadata/_edit_group_ = true
 
 [node name="Arrow_spawn" type="PathFollow2D" parent="Arrow_path" unique_id=1114970885]
 
-[node name="Arrow_timer" type="Timer" parent="." unique_id=674283391]
-autostart = true
-
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="Mob_timer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="Score_timer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Start_timer" to="." method="_on_start_timer_timeout"]
-[connection signal="timeout" from="Arrow_timer" to="." method="_on_arrow_timer_timeout"]

@@ -9,6 +9,7 @@ radius = 46.34412
 [node name="Shotgun" type="Area2D" unique_id=1941593901 groups=["Shotgun", "shotgun"]]
 position = Vector2(0, 1)
 scale = Vector2(0.6, 0.6)
+collision_layer = 0
 script = ExtResource("1_dm81p")
 metadata/_edit_group_ = true
 

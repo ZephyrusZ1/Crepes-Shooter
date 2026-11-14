@@ -8,6 +8,7 @@ size = Vector2(61, 58)
 
 [node name="quick_reload" type="Area2D" unique_id=1568954786 groups=["Power_up"]]
 position = Vector2(0, -1)
+collision_layer = 0
 script = ExtResource("1_uj6f6")
 metadata/_edit_group_ = true
 

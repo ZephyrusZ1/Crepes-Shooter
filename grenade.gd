@@ -12,7 +12,6 @@ func thrown():
 	collision_shape.set_deferred("disabled", true)
 	await get_tree().create_timer(3).timeout
 	collision_shape.set_deferred("disabled", false)
-	$Sprite2D.hide()
 	$AnimatedSprite2D.show()
 	$AnimatedSprite2D.play("Kaboom!")
 	await $AnimatedSprite2D.animation_finished

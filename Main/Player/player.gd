@@ -140,3 +140,9 @@ func throw_grenade():
 	explosives.global_position = get_global_mouse_position()
 	get_parent().add_child(explosives)
 	explosives.thrown
+
+
+
+func _on_area_entered(area: Area2D):
+	hide()
+	hit.emit()

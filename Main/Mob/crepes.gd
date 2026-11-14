@@ -2,9 +2,11 @@ extends RigidBody2D
 @export var quick_reload: PackedScene
 @export var shotgun: PackedScene
 @export var nade: PackedScene
-
+@export var arrow: PackedScene
+@onready var origin = $Marker2D
+var shooter = false
 signal death
-
+var speed = 300
 func _ready():
 	var crepes_variants = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
 	$AnimatedSprite2D.animation = crepes_variants.pick_random()
@@ -33,3 +35,18 @@ func killed():
 	queue_free()
 	
 	
+func shooting():
+	if randf() <= 0.3:
+		shooter = true
+	if shooter == true:
+		var angle = [PI, 0, PI/2, -PI/2]
+		for projectiles in angle:
+			var arrows = arrow.instantiate()
+			arrows.global_position = origin.global_position
+			arrows.rotation += projectiles
+			arrows.velocity = Vector2(speed, 0).rotated(projectiles)
+			get_tree().current_scene.add_child(arrows)
+		shooter = false
+
+func _on_timer_timeout() -> void:
+	shooting()

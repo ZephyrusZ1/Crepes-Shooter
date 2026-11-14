@@ -7,6 +7,7 @@
 radius = 16.0
 
 [node name="Explosives" type="Area2D" unique_id=962278203]
+collision_layer = 0
 script = ExtResource("1_ajmbk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1123702203]
