@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmlt6l56rrxhr" path="res://Main/Weaponary/quick_reload.gd" id="1_uj6f6"]
 [ext_resource type="Texture2D" uid="uid://bb2x6ehfmx8hl" path="res://Art/shotgun_collect.png" id="2_it7yy"]
+[ext_resource type="PackedScene" uid="uid://brbl3mbyqx4oc" path="res://Main/Weaponary/bullet_body.tscn" id="2_jq4nt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htemk"]
 size = Vector2(61, 58)
@@ -10,6 +11,7 @@ size = Vector2(61, 58)
 position = Vector2(0, -1)
 collision_layer = 0
 script = ExtResource("1_uj6f6")
+bullet = ExtResource("2_jq4nt")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1219522234]
@@ -20,6 +22,9 @@ texture = ExtResource("2_it7yy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1391180951]
 position = Vector2(-48.5, 46)
 shape = SubResource("RectangleShape2D_htemk")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=695079549]
+position = Vector2(-49, 45)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,7 +5,7 @@ extends Node
 var score = 0
 var count = 20
 var mob_count = 0
-
+var spawn = true
 
 
 
@@ -25,7 +25,7 @@ func new_game():
 	get_tree().call_group("arrow", "queue_free")
 	mob_count = 0
 	arrow_timer()
-
+	spawn = true
 func _on_start_timer_timeout():
 	$Mob_timer.start()
 	$Score_timer.start()
@@ -57,6 +57,7 @@ func _on_player_hit():
 	$HUD.show_game_over()
 	$Death.play()
 	$BGM.stop()
+	spawn = false
 	
 func _on_death():
 	score += 1
@@ -68,16 +69,18 @@ func _on_death():
 
 	
 func arrow_timer():
+	if spawn == false:
+		return
 	await get_tree().create_timer(randf_range(1, 8)).timeout
 	var arrow = arrow_scene.instantiate()
 	var arrow_spawn = $Arrow_path/Arrow_spawn
 	arrow_spawn.progress_ratio = randf()
 	arrow.global_position = arrow_spawn.global_position
-	
+		
 	var direction = arrow_spawn.rotation + PI/2
 	arrow.rotation = direction
-	
+		
 	var velocity =Vector2(randf_range(1500, 1800), 0)
 	arrow.velocity = velocity.rotated(direction)
 	add_child(arrow)
-	arrow_timer()
+	
