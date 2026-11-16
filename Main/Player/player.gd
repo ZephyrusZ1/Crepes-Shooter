@@ -10,6 +10,7 @@ var shotgun_lock = true
 var bullet_count = 10
 var rel_delay = 2
 var fire_rate = 1.2
+var normal_fire_rate = 1.2
 var delay = true
 var delay2 = false
 @onready var grenade_counter = $Grenade_count
@@ -148,7 +149,7 @@ func throw_grenade():
 func _on_area_entered(area: Area2D):
 	hide()
 	hit.emit()
-
+	fire_rate = normal_fire_rate
 
 func _on_opt1():
 	if fire_rate > 0.3:

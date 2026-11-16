@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://i828c4n23a8e"]
 
-[ext_resource type="Script" uid="uid://cuo7mspk4b2xn" path="res://Main/HUD/canvas_layer.gd" id="1_merlr"]
+[ext_resource type="Script" uid="uid://cuo7mspk4b2xn" path="res://Main/HUD/options_ui.gd" id="1_7s0py"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1855962818]
-script = ExtResource("1_merlr")
+[node name="options_ui" type="CanvasLayer" unique_id=1855962818]
+script = ExtResource("1_7s0py")
 
 [node name="Control" type="Control" parent="." unique_id=138670603]
 process_mode = 3

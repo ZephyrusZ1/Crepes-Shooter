@@ -13,6 +13,7 @@ func _ready():
 	var crepes_variants = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
 	$AnimatedSprite2D.animation = crepes_variants.pick_random()
 	$AnimatedSprite2D.play()
+	EventBus.player_death.connect(_on_player_death)
 	
 
 
@@ -35,7 +36,7 @@ func killed():
 			drop.global_position = global_position
 			get_tree().current_scene.call_deferred("add_child", drop)
 	queue_free()
-	if randf() <= 0.8:
+	if randf() <= 0.1:
 		var ability = upgrade.instantiate()
 		ability.global_position = global_position
 		get_tree().current_scene.call_deferred("add_child", ability)
@@ -61,3 +62,6 @@ func _on_timer_timeout() -> void:
 func _on_opt2():
 	if yield_rate < 0.8:
 		yield_rate += 0.05
+		
+func _on_player_death():
+	yield_rate = 0.2

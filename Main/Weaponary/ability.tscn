@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cw7ve021g2ojs" path="res://area_2d.gd" id="1_jemuq"]
 [ext_resource type="Texture2D" uid="uid://csh10y4ksarbm" path="res://Art/Items/book_04d.png" id="2_mtnxw"]
-[ext_resource type="PackedScene" uid="uid://i828c4n23a8e" path="res://Main/HUD/canvas_layer.tscn" id="2_tki2l"]
+[ext_resource type="PackedScene" uid="uid://i828c4n23a8e" path="res://Main/HUD/options_ui.tscn" id="2_tki2l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svr2r"]
 radius = 11.045361
 
-[node name="Ability" type="Area2D" unique_id=1320229844]
+[node name="Ability" type="Area2D" unique_id=1320229844 groups=["ability"]]
 collision_layer = 0
 script = ExtResource("1_jemuq")
 options = ExtResource("2_tki2l")
