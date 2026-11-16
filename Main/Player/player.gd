@@ -9,7 +9,7 @@ var screen_size
 var shotgun_lock = true
 var bullet_count = 10
 var rel_delay = 2
-var fire_rate = 0.8
+var fire_rate = 1.2
 var delay = true
 var delay2 = false
 @onready var grenade_counter = $Grenade_count
@@ -23,6 +23,8 @@ func _ready():
 	hide()
 	shotgun_mode()
 	shotgun_activation()
+	EventBus.opt1.connect(_on_opt1)
+	EventBus.opt3.connect(_on_opt3)
 func _process(delta):
 	if unlock == true:
 		var velocity = Vector2.ZERO
@@ -132,7 +134,7 @@ func auto_shoot():
 	if delay == true:
 		fire_bullet()
 		delay = false
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(fire_rate).timeout
 		delay = true
 
 func throw_grenade():
@@ -146,3 +148,12 @@ func throw_grenade():
 func _on_area_entered(area: Area2D):
 	hide()
 	hit.emit()
+
+
+func _on_opt1():
+	if fire_rate > 0.3:
+		fire_rate -= 0.05
+		
+func _on_opt3():
+	if speed < 600:
+		speed +=15

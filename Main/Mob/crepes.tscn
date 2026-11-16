@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dnhxbcl0u3fm3" path="res://Main/Mob/arrow.tscn" id="5_ntgcv"]
 [ext_resource type="Texture2D" uid="uid://bnl17t1j614rd" path="res://Art/Enemy/Placeholder/enemyFlyingAlt_2.png" id="5_vkl81"]
 [ext_resource type="Texture2D" uid="uid://d0d05yh4wfxxw" path="res://Art/Enemy/Placeholder/enemySwimming_1.png" id="6_ntgcv"]
+[ext_resource type="PackedScene" uid="uid://cihb1a35nwcgo" path="res://Main/Weaponary/ability.tscn" id="6_wdwrx"]
 [ext_resource type="Texture2D" uid="uid://bj648vwdtbo57" path="res://Art/Enemy/Placeholder/enemySwimming_2.png" id="7_wdwrx"]
 [ext_resource type="Texture2D" uid="uid://cd7unvv83oxh0" path="res://Art/Enemy/Placeholder/enemyWalking_1.png" id="8_xua3a"]
 [ext_resource type="Texture2D" uid="uid://ylhrtfiiebpl" path="res://Art/Enemy/Placeholder/enemyWalking_2.png" id="9_oeaxc"]
@@ -64,6 +65,7 @@ quick_reload = ExtResource("2_votsr")
 shotgun = ExtResource("3_vkl81")
 nade = ExtResource("4_vkl81")
 arrow = ExtResource("5_ntgcv")
+upgrade = ExtResource("6_wdwrx")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1326364231]

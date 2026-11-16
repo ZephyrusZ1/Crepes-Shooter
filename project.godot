@@ -15,6 +15,10 @@ run/main_scene="uid://xb16gbf3vf4v"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventBus="*uid://cde1atflsyud8"
+
 [display]
 
 window/stretch/mode="canvas_items"

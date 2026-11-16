@@ -4,6 +4,8 @@ extends RigidBody2D
 @export var nade: PackedScene
 @export var arrow: PackedScene
 @onready var origin = $Marker2D
+@export var upgrade: PackedScene
+var yield_rate = 0.2
 var shooter = false
 signal death
 var speed = 300
@@ -25,7 +27,7 @@ func _on_body_entered(body: Node):
 	
 func killed():
 	death.emit()
-	if randf() <= 0.2 :
+	if randf() <= yield_rate :
 		var pools = [nade, shotgun,  quick_reload]
 		var pool_pick = pools.pick_random()
 		if pool_pick:
@@ -33,7 +35,11 @@ func killed():
 			drop.global_position = global_position
 			get_tree().current_scene.call_deferred("add_child", drop)
 	queue_free()
-	
+	if randf() <= 0.8:
+		var ability = upgrade.instantiate()
+		ability.global_position = global_position
+		get_tree().current_scene.call_deferred("add_child", ability)
+	queue_free()
 	
 func shooting():
 	if randf() <= 0.3:
@@ -50,3 +56,8 @@ func shooting():
 
 func _on_timer_timeout() -> void:
 	shooting()
+
+
+func _on_opt2():
+	if yield_rate < 0.8:
+		yield_rate += 0.05

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://i828c4n23a8e"]
+
+[ext_resource type="Script" uid="uid://cuo7mspk4b2xn" path="res://Main/HUD/canvas_layer.gd" id="1_merlr"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1855962818]
+script = ExtResource("1_merlr")
+
+[node name="Control" type="Control" parent="." unique_id=138670603]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button1" type="Button" parent="Control" unique_id=671767613]
+custom_minimum_size = Vector2(400, 40)
+custom_maximum_size = Vector2(-1, 40)
+layout_mode = 0
+offset_left = 379.0
+offset_top = 268.0
+offset_right = 779.0
+offset_bottom = 308.0
+text = "Fire rate++"
+
+[node name="Button2" type="Button" parent="Control" unique_id=1121915127]
+custom_minimum_size = Vector2(400, 40)
+custom_maximum_size = Vector2(-1, 40)
+layout_mode = 0
+offset_left = 378.0
+offset_top = 313.0
+offset_right = 778.0
+offset_bottom = 353.0
+text = "Yield rate ++"
+
+[node name="Button3" type="Button" parent="Control" unique_id=983890083]
+custom_minimum_size = Vector2(400, 40)
+custom_maximum_size = Vector2(-1, 40)
+layout_mode = 0
+offset_left = 379.0
+offset_top = 359.0
+offset_right = 779.0
+offset_bottom = 399.0
+text = "player speed++"
+
+[connection signal="pressed" from="Control/Button1" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Control/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Control/Button3" to="." method="_on_button_2_pressed"]
